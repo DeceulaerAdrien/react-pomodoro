@@ -29572,17 +29572,15 @@ if ("development" === 'production') {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Pomodoro = Pomodoro;
 
 var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default() {
+function Pomodoro() {
   return /*#__PURE__*/_react.default.createElement("h1", null, "Hello");
-};
-
-exports.default = _default;
+}
 },{"react":"../../node_modules/react/index.js"}],"../components/App.js":[function(require,module,exports) {
 "use strict";
 
@@ -29593,7 +29591,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _pomodoro = _interopRequireDefault(require("./pomodoro"));
+var _pomodoro = require("./pomodoro");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29601,7 +29599,7 @@ var _default = function _default() {
   /*#__PURE__*/
   _react.default.createElement("div", {
     className: "Hello"
-  }, /*#__PURE__*/_react.default.createElement(_pomodoro.default, null), ";");
+  }, /*#__PURE__*/_react.default.createElement(_pomodoro.Pomodoro, null), ";");
 };
 
 exports.default = _default;
@@ -29645,7 +29643,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65432" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49229" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,5 +1,5 @@
 import React from "react";
 
-export default () => {
+export function Pomodoro() {
   return <h1>Hello</h1>;
-};
+}
