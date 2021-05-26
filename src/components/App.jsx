@@ -1,8 +1,12 @@
 import React from "react";
-import Pomodoro from "./pomodoro";
+import Pomodoro from "./Pomodoro";
 
 const App = () => {
-  return <Pomodoro />;
+  return (
+    <div className="App">
+      <Pomodoro />
+    </div>
+  );
 };
 
 export default App;
