@@ -10,7 +10,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel src/public/index.html",
+    "build": "parcel build src/public/index.html"
   },
   "repository": {
     "type": "git",
