@@ -29,8 +29,6 @@ Appuyer tous simplement sur le bouton start
 
 ## Versions
 
-Listez les versions ici
-_exemple :_
 **Dernière version stable :** 1.0
 **Dernière version :** 1.0
 Liste des versions : [Cliquer pour afficher](https://github.com/DeceulaerAdrien/react-pomodoro/tags)
