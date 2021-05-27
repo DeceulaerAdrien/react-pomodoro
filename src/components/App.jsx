@@ -1,5 +1,5 @@
 import React from "react";
-import Pomodoro from "./Pomodoro";
+import Pomodoro from "./pomodoro";
 import "../styles/App.css";
 
 class App extends React.Component {
