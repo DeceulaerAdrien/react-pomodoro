@@ -24,7 +24,7 @@ Appuyer tous simplement sur le bouton start
 
 ## Fabriqué avec
 
-- [ReactJS]() - Framework JS
+- [ReactJS](https://reactjs.org/) - Framework JS
 - [Visual Studio Code](https://code.visualstudio.com/) - Editeur de textes
 
 ## Versions
@@ -32,6 +32,11 @@ Appuyer tous simplement sur le bouton start
 **Dernière version stable :** 1.0
 **Dernière version :** 1.0
 Liste des versions : [Cliquer pour afficher](https://github.com/DeceulaerAdrien/react-pomodoro/tags)
+
+## Déploiement
+
+Le projet est déployer sur Netify
+[Pomodoro](https://pedantic-panini-61697f.netlify.app)
 
 ## Auteurs
 
