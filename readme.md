@@ -16,7 +16,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 Executez la commande "npm start" ou "parcel index.html" depuis le dossier public pour commencer ensuite ouvrer le localhost:1234
 
-![](assets\pomodoro.PNG)
+![](https://raw.githubusercontent.com/DeceulaerAdrien/react-pomodoro/main/assets/pomodoro.PNG)
 
 ## Démarrage
 
