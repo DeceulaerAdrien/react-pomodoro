@@ -1,41 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Pomodoro = () => {
   const [Min, setMin] = useState(25);
   const [Sec, setSec] = useState(0);
   const [isStart, setStart] = useState(false);
 
-  const increaseOneMin = () => {
+  const increaseMin = () => {
     Min >= 59 ? setMin(0) : setMin(Min + 1);
   };
 
-  const decreasOneMin = () => {
+  const decreaseMin = () => {
     Min <= 0 ? setMin(59) : setMin(Min - 1);
   };
+
   const decreaseTimerMin = () => {
     Min <= 0 ? setMin(0) : setMin(Min - 1);
     Sec <= 0 ? setSec(59) : null;
   };
+
   const decreasOneSec = () => {
     Sec <= 0 ? decreaseTimerMin() : setSec(Sec - 1);
-    Sec === 0 && Min === 0 ? stopTimer : null;
+    Sec === 0 && Min === 0 ? stopTimer() : null;
   };
 
-  const startTimer = () => {
-    setInterval(decreasOneSec(), 1000);
-    setStart(true);
-  };
-
-  const stopTimer = (timer) => {
-    timer = startTimer.timer;
-    clearInterval(timer);
-    setStart(false);
-  };
+  const Timer = () => {};
 
   const reset = () => {
-    stopTimer();
-    setMin(25);
-    setSec(0);
+    setMin(25) + setSec(0);
   };
 
   return (
@@ -45,12 +36,10 @@ const Pomodoro = () => {
         {Sec === 0 ? "00" : Sec < 10 ? "0" + Sec : Sec}
       </h2>
       <div className="buttons">
-        <button onClick={increaseOneMin}>+</button>
-        <button onClick={isStart === false ? startTimer : stopTimer}>
-          {isStart === true ? "stop" : "start"}
-        </button>
+        <button onClick={increaseMin}>+</button>
+        <button onClick={Timer}>{isStart === true ? "stop" : "start"}</button>
         <button onClick={reset}>reset</button>
-        <button onClick={decreasOneMin}>-</button>
+        <button onClick={decreaseMin}>-</button>
       </div>
     </section>
   );
