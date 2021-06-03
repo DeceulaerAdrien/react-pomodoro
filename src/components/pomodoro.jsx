@@ -1,94 +1,59 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Pomodoro extends Component {
-  constructor() {
-    super();
+const Pomodoro = () => {
+  const [Min, setMin] = useState(25);
+  const [Sec, setSec] = useState(0);
+  const [isStart, setStart] = useState(false);
 
-    this.state = {
-      Min: 25,
-      Sec: 0,
-      isStart: false,
-    };
+  const increaseOneMin = () => {
+    Min >= 59 ? setMin(0) : setMin(Min + 1);
+  };
 
-    this.decreasOneMin = this.decreasOneMin.bind(this);
-    this.increaseOneMin = this.increaseOneMin.bind(this);
-    this.decreasOneSec = this.decreasOneSec.bind(this);
-    this.startTimer = this.startTimer.bind(this);
-    this.stopTimer = this.stopTimer.bind(this);
-    this.reset = this.reset.bind(this);
-    this.decreaseTimerMin = this.decreaseTimerMin.bind(this);
-  }
+  const decreasOneMin = () => {
+    Min <= 0 ? setMin(59) : setMin(Min - 1);
+  };
+  const decreaseTimerMin = () => {
+    Min <= 0 ? setMin(0) : setMin(Min - 1);
+    Sec <= 0 ? setSec(59) : null;
+  };
+  const decreasOneSec = () => {
+    Sec <= 0 ? decreaseTimerMin() : setSec(Sec - 1);
+    Sec === 0 && Min === 0 ? stopTimer : null;
+  };
 
-  increaseOneMin() {
-    this.state.Min >= 59
-      ? this.setState({ Min: 0 })
-      : this.setState({ Min: this.state.Min + 1 });
-  }
+  const startTimer = () => {
+    setInterval(decreasOneSec(), 1000);
+    setStart(true);
+  };
 
-  decreasOneMin() {
-    this.state.Min <= 0
-      ? this.setState({ Min: 59 })
-      : this.setState({ Min: this.state.Min - 1 });
-  }
-  decreaseTimerMin() {
-    this.state.Min <= 0
-      ? this.setState({ Min: 0 })
-      : this.setState({ Min: this.state.Min - 1 });
-    this.state.Sec <= 0 ? this.setState({ Sec: 59 }) : null;
-  }
-  decreasOneSec() {
-    this.state.Sec <= 0
-      ? this.decreaseTimerMin()
-      : this.setState({ Sec: this.state.Sec - 1 });
-    this.state.Sec === 0 && this.state.Min === 0 ? this.stopTimer() : null;
-  }
+  const stopTimer = (timer) => {
+    timer = startTimer.timer;
+    clearInterval(timer);
+    setStart(false);
+  };
 
-  startTimer() {
-    this.timer = setInterval(this.decreasOneSec, 1000);
-    this.setState({ isStart: true });
-  }
+  const reset = () => {
+    stopTimer();
+    setMin(25);
+    setSec(0);
+  };
 
-  stopTimer() {
-    clearInterval(this.timer);
-    this.setState({ isStart: false });
-  }
-
-  reset() {
-    this.stopTimer();
-    this.setState({ Min: 25, Sec: 0 });
-  }
-
-  render() {
-    return (
-      <section className="timer">
-        <h2>
-          {this.state.Min === 0
-            ? "00"
-            : this.state.Min < 10
-            ? "0" + this.state.Min
-            : this.state.Min}
-          :
-          {this.state.Sec === 0
-            ? "00"
-            : this.state.Sec < 10
-            ? "0" + this.state.Sec
-            : this.state.Sec}
-        </h2>
-        <div className="buttons">
-          <button onClick={this.increaseOneMin}>+</button>
-          <button
-            onClick={
-              this.state.isStart === false ? this.startTimer : this.stopTimer
-            }
-          >
-            {this.state.isStart === true ? "stop" : "start"}
-          </button>
-          <button onClick={this.reset}>reset</button>
-          <button onClick={this.decreasOneMin}>-</button>
-        </div>
-      </section>
-    );
-  }
-}
+  return (
+    <section className="timer">
+      <h2>
+        {Min === 0 ? "00" : Min < 10 ? "0" + Min : Min}:
+        {Sec === 0 ? "00" : Sec < 10 ? "0" + Sec : Sec}
+      </h2>
+      <div className="buttons">
+        <button onClick={increaseOneMin}>+</button>
+        <button onClick={isStart === false ? startTimer : stopTimer}>
+          {isStart === true ? "stop" : "start"}
+        </button>
+        <button onClick={reset}>reset</button>
+        <button onClick={decreasOneMin}>-</button>
+      </div>
+    </section>
+  );
+};
 
 export default Pomodoro;
